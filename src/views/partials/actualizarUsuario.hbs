@@ -1,0 +1,59 @@
+<body class="text-gray-900 bg-dark">
+            {{> messages}}
+            {{> errors}}
+  <div class="card float-none container" style="width: 95%;">
+    <div class="pt-5 pb-3 text-center">
+      <h2>Actualizar usuario</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-5 justify-content-center">
+        <form action="/usuarios/buscar" method="POST">
+          <input type="text" placeholder="Ingrese Identificación" class="input-control input-number" name="cedula">
+          <button class="btn btn-outline-success ml-2" id="btnConsultar" type="submit">Consultar</button>
+        </form>
+        </div>
+
+        <hr style="width: 100%;">
+        <form action="/usuarios/actualizar" method="POST">
+          <div class="row justify-content-center">
+            <div class="col-md-2">
+              <label for="firstName" class="mt-2">Nombre</label>
+              <input for="" class="form-control" id="firstName" name="nombre" value="{{nombre}}"></input>
+            </div>
+            <div class="col-md-2">
+              <label for="lastName" class="mt-2">Apellidos</label>
+              <input for="" class="form-control" id="lastName" name="apellido" value="{{apellido}}"></input>
+            </div>
+            <div class="col-md-2">
+              <label for="cedula" class="mt-2">Cedula</label>
+              <!-- <label class="form-control" id="cedula" name="cedula" value="{{cedula}}">{{cedula}}</label>-->
+              <input class="form-control" id="Cedula" name="Cedula" value="{{cedula}}" readonly></input>
+            </div>
+            <div class="col-md-3">
+              <label for="email" class="mt-2">Correo</label>
+              <input for="" class="form-control" id="email" name="correo" value="{{correo}}"></input>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-3 mb-3">
+            <div class="col-md-2">
+              <button class="btn btn-primary" type="submit">Actualizar</button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-danger" type="button">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+  $('.input-number').on('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+</script>
+
+</html>

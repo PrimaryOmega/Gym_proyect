@@ -1,0 +1,120 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+button,
+a{
+    outline: none;
+}
+
+.general-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+}
+.selecion-container{
+    width: 100%;
+    display: inline-table;
+    justify-content: center;
+    height: 600px;
+}
+aside{
+    max-width: 500px;
+    padding-right: 50px;
+}
+
+.map-container{
+    width: 60%;
+}
+
+.consulta-container{
+    width: 40%;
+}
+
+#map{
+    width: 100%;
+    height: 85%;
+}
+
+.text-muted{
+    color: #585858;
+    font-weight: 500;
+}
+
+.form-control{
+    width: 100%;
+    padding: 3px 0px;
+    font-size: .95rem;
+}
+
+.input-control{
+    padding: 03px 20px;
+    font-size: .95rem;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.input-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.select-container{
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.select-control{
+    padding: 6px 46.5%;
+    font-size: .95rem;
+}
+
+.btn{
+    border: none;
+    padding: 8px 30px;
+    font-size: .9rem;
+    border-radius: 4px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.btn-principal{
+    background: #1a67db;
+    color: #fff;
+}
+.btn-Consultar{
+  border: none;
+  padding: 8px 10px;
+  font-size: .9rem;
+  border-radius: 4px;
+  margin: 0 0px 0 10px;
+  cursor: pointer;
+  background: #107f38;
+  color: #fff;
+}
+
+.btn-danger{
+    background: #db201a;
+    color: #fff;
+}
+
+.btn-Consultar:hover{
+    box-shadow: 0px 0px 3px #107f38;
+}
+
+.btn-principal:hover{
+    box-shadow: 0px 0px 3px #1a67db;
+}
+
+.btn-danger:hover{
+    box-shadow: 0px 0px 3px #db201a;
+}

@@ -1,0 +1,229 @@
+<body id="page-top" class="bg-dark">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">SUPERGYM</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/cerrarsesion">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Cerrar sesion</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading text-center">
+        Controles:
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Agregar cuentas</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Registrar nuevo:</h6>
+            <a class="collapse-item" href="javascript:inframes(1)">Nuevo Cliente</a>       
+            <div id="link" style="display: none;"><a class="collapse-item" href="javascript:inframes(2)">Nuevo Usuario</a> </div>         
+
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Acciones</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Acciones:</h6>
+            <a class="collapse-item" href="javascript:inframes(3)">Membresias</a>
+            <a class="collapse-item" href="javascript:inframes(4)">Actualizar cliente</a>
+            <a class="collapse-item" href="javascript:inframes(5)">Eliminar cliente</a>
+            <div id="usuario" style="display: none;">
+            <a class="collapse-item" href="javascript:inframes(6)">Actualizar usuario</a>
+            <a class="collapse-item" href="javascript:inframes(7)">Eliminar usuario</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column bg-dark">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid text-white">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-4">
+            <h1 class="h3 mb-0">Dashboard</h1>  
+                 
+          </div>   <h1>Hola {{user.username}}</h1>  
+           <div class="text-gray-900 ">
+    
+            {{> messages}}
+            {{> errors}}
+            
+            <div style="display:none;" id="registroCli">
+             
+             <iframe src="/clientes/registro" height="550" width="1050"frameborder="0"></iframe>             
+            </div>
+      
+
+            <div style="display:none;" id="registroUss">
+             <iframe  src="/usuarios/registro" height="600" width="1050"frameborder="0"></iframe>             
+            </div>    
+
+            <div style="display:none;" id="membreCli">
+             <iframe  src="/clientes/busqueda" height="580" width="1050"frameborder="0"></iframe>             
+            </div>   
+            
+            <div style="display:none;" id="updateCli">
+             <iframe  src="/clientes/actualizar" height="580" width="1050"frameborder="0"></iframe>             
+            </div>  
+
+            <div style="display:none;" id="deleteCli">
+             <iframe  src="/clientes/eliminar" height="580" width="1050"frameborder="0"></iframe>             
+            </div>        
+
+            <div style="display:none;" id="updateUss">
+             <iframe  src="/usuarios/actualizar" height="580" width="1050"frameborder="0"></iframe>             
+            </div>  
+
+            <div style="display:none;" id="deleteUss">
+             <iframe  src="/usuarios/eliminar" height="580" width="1050"frameborder="0"></iframe>             
+            </div>                               
+              
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+</body>
+<script> 
+  function inframes(x){    
+        var cli = document.getElementById('registroCli');
+        var uss = document.getElementById('registroUss');
+        var mem = document.getElementById('membreCli');
+        var upcli = document.getElementById('updateCli');
+        var delcli = document.getElementById('deleteCli');
+        var upuss = document.getElementById('updateUss');
+        var deluss = document.getElementById('deleteUss');                                
+    switch (x) {
+      case 1:        
+        cli.style.display = 'block';
+        uss.style.display = 'none';
+        mem.style.display = 'none';
+        upcli.style.display = 'none';
+        delcli.style.display = 'none';
+        upuss.style.display = 'none';
+        deluss.style.display = 'none';                                
+       break;
+      case 2:        
+        cli.style.display = 'none';
+        uss.style.display = 'block';
+        mem.style.display = 'none';
+        upcli.style.display = 'none';
+        delcli.style.display = 'none';
+        upuss.style.display = 'none';
+        deluss.style.display = 'none';   
+       break;
+
+      case 3: 
+        cli.style.display = 'none';
+        uss.style.display = 'none';
+        mem.style.display = 'block';
+        upcli.style.display = 'none';
+        delcli.style.display = 'none';
+        upuss.style.display = 'none';
+        deluss.style.display = 'none';                      
+       break;
+
+      case 4:                
+        cli.style.display = 'none';
+        uss.style.display = 'none';
+        mem.style.display = 'none';
+        upcli.style.display = 'block';
+        delcli.style.display = 'none';
+        upuss.style.display = 'none';
+        deluss.style.display = 'none';       
+       break;
+
+      case 5:    
+        cli.style.display = 'none';
+        uss.style.display = 'none';
+        mem.style.display = 'none';
+        upcli.style.display = 'none';
+        delcli.style.display = 'block';
+        upuss.style.display = 'none';
+        deluss.style.display = 'none';                   
+       break;              
+
+      case 6: 
+        cli.style.display = 'none';
+        uss.style.display = 'none';
+        mem.style.display = 'none';
+        upcli.style.display = 'none';
+        delcli.style.display = 'none';
+        upuss.style.display = 'block';
+        deluss.style.display = 'none';                      
+       break;     
+
+      case 7: 
+        cli.style.display = 'none';
+        uss.style.display = 'none';
+        mem.style.display = 'none';
+        upcli.style.display = 'none';
+        delcli.style.display = 'none';
+        upuss.style.display = 'none';
+        deluss.style.display = 'block';                      
+       break;             
+
+    }
+  }
+</script>
+<script>
+
+var obj ='{{user.rol}}';
+if(obj=='ADMIN'){
+document.getElementById('link').style.display="block";
+document.getElementById('usuario').style.display="block";
+
+}
+</script>

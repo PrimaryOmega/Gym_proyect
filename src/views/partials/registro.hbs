@@ -1,0 +1,56 @@
+<body class="bg-dark">
+           {{> messages}}
+            {{> errors}}
+  <div class="card float-none container" style="width: 95%;">
+   
+    <div class="py-4 text-center">
+      <h2>Registro de Clientes</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 order-md-1 ">
+        <h4 class="mb-3">Datos personales</h4>
+      </div>
+    </div>
+    <div class="pb-4 text-center">
+      <form action="/clientes/nuevo" method="POST">
+      <div class="row justify-content-center">
+        <div class="col-md-4 order-md-1 ">
+          <label for="Nombre">Nombre</label>
+          <input type="text" class="form-control" name="Nombre" placeholder="" required="yes">
+        </div>
+
+        <div class="col-md-4 order-md-1 ">
+          <label for="Apellido">Apellidos</label>
+          <input type="text" class="form-control" name="Apellido" placeholder=""  required="yes">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3 mt-3">
+          <label for="Cedula">Cedula: <span class="text-muted"></span></label>
+          <input type="cedula" class="form-control input-number" name="Cedula" placeholder="099999999" required="yes" value="{{Cedula}}">
+        </div>
+
+        <div class="col-md-4 mb-3 mt-3">
+          <label for="Num_telef">Telefono:<span class="text-muted"></span></label>
+          <input type="telefono" class="form-control input-number" name="Num_telef" placeholder="+593 987654321" required="yes">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3 mt-3">
+          <label for="Correo">Correo <span class="text-muted"></span></label>
+          <input type="email" class="form-control" name="Correo" placeholder="usuario@mail.com" required="yes">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3 mt-3">
+          <button class="btn btn-primary btn-lg btn-block align-content-lg-center" type="submit">Registrar</button>
+        </div>       
+      </div>
+      </form>
+    </div>
+
+</body>

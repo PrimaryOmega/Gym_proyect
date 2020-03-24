@@ -1,0 +1,83 @@
+<body class="bg-dark">
+            {{> messages}}
+            {{> errors}}
+  
+   <div class="card float-none container" style="width: 95%;">
+
+    <div class="py-4 text-center">
+      <h2>Registro de Usuarios</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 order-md-1 ">
+        <h4 class="mb-3">Datos personales</h4>
+      </div>
+    </div>
+
+    <div class="pb-4">
+      <form action="/usuarios/registro" method="POST">
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" placeholder="" required="yes" value="{{nombre}}">
+        </div>
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Apellido">Apellidos</label>
+          <input type="text" class="form-control" name="apellido" placeholder="" required="yes" value="{{apellido}}"> 
+        </div>
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Num_telef">Telefono:<span class="text-muted"></span></label>
+          <input type="telefono" class="form-control input-number" name="telefono" placeholder="+593 987654321" required="yes" value="{{telefono}}">
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center">
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="rol">Rol <span class="text-muted"></span></label>
+          <select name="rol" id="" class="form-control">
+            <option value="0">Seleccione rol..</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="GERENTE">Gerente</option>
+            <option value="EMPLEADO">Empleado</option>
+          </select>
+        </div>      
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Usuario">Usuario: <span class="text-muted"></span></label>
+          <input type="ussser" class="form-control" name="username" placeholder="" required="yes" value="{{username}}">
+        </div>
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Contraseña">Contraseña: <span class="text-muted"></span></label>
+          <input type="password" class="form-control" name="password" placeholder="" required="yes">
+        </div>
+      </div>
+
+
+
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Cedula">Cedula: <span class="text-muted"></span></label>
+          <input type="cedula" class="form-control input-number" name="cedula" placeholder="099999999" required="yes" value="{{cedula}}">
+        </div>
+
+        <div class="col-md-3 mb-2 mt-2">
+          <label for="Correo">Correo <span class="text-muted"></span></label>
+          <input type="email" class="form-control" name="email" placeholder="usuario@mail.com" required="yes" value="{{email}}">
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-2 mt-4">
+          <button class="btn btn-primary btn-lg btn-block align-content-lg-center" type="submit">Registrar</button>
+        </div>
+      </div>
+      </form>
+    </div>
+
+</body>

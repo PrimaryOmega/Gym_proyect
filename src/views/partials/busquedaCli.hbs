@@ -1,0 +1,341 @@
+<body class="text-gray-900 bg-dark">
+  {{> messages}}
+  {{> errors}}
+  <div class="card float-none container" style="width: 95%;">
+    <div class="pt-5 pb-3 text-center">
+      <h2>Activación de Membresias</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-5 justify-content-center">
+        <form action="/busqueda" method="POST">
+          <input type="text" placeholder="Ingrese Identificación" class="input-control input-number" name="cedula">
+          <button class="btn btn-outline-success ml-2" id="btnConsultar" type="submit">Consultar</button>
+        </form>
+      </div>
+    </div>
+    <hr style="width: 100%;">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <button class="btn btn-primary" type="button" onclick="btnAddMembresia()">Nueva Membresia</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" type="button" onclick="btnRenovarMemb()">Renovar Membresia</button>
+      </div>
+    </div>
+    <hr style="width: 100%;">
+    <form action="/cliente/actMembresia" method="POST">
+      <div class="row justify-content-center">
+        <div class="col-md-2">
+          <label for="firstName" class="mt-2">Nombre</label>
+          <input for="" class="form-control" id="firstName" value="{{nombre}}"></input>
+        </div>
+        <div class="col-md-2">
+          <label for="lastName" class="mt-2">Apellidos</label>
+          <input for="" class="form-control" id="lastName" value="{{apellido}}"></input>
+        </div>
+        <div class="col-md-2">
+          <label for="cedula" class="mt-2">Cedula</label>
+          <!-- <label class="form-control" id="cedula" name="cedula" value="{{cedula}}">{{cedula}}</label>-->
+          <input class="form-control" id="Cedula" name="Cedula" value="{{cedula}}" readonly></input>
+        </div>
+        <div class="col-md-3">
+          <label for="email" class="mt-2">Correo</label>
+          <input for="" class="form-control" id="email" value="{{correo}}"></input>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <label for="membresia addMeses" class="mt-1">Membresia</label>
+          <select class="form-control" name="membresia" id="membresia" onchange="selecmembre();">
+            <option value="0">seleccione membresia...</option>
+            <option value="1">Membresia por 1 mes</option>
+            <option value="2">Membresia por 3 meses</option>
+            <option value="3">Membresia por 6 meses</option>
+            <option value="4">Membresia por 1 año</option>
+          </select>
+          <select class="form-control" name="addMeses" id="addMeses" onchange="addMes();">
+            <option value="0">seleccione membresia...</option>
+            <option value="1">Agregar 1 mes</option>
+            <option value="2">Agregar 3 meses</option>
+            <option value="3">Agregar 6 meses</option>
+            <option value="4">Agregar 1 año</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="" class="mt-1">Inicio</label>
+          <input for="" class="form-control" id="membresiaInicio" name="membresiaInicio"
+            value="{{Ini_membresia}}"></input>
+        </div>
+        <div class="col-md-2">
+          <label for="" class="mt-1">Fin</label>
+          <input for="" class="form-control" id="membresiaFin" name="membresiaFin" value="{{Fin_membresia}}"></input>
+        </div>
+        <div class="col-md-2">
+          <label for="" class="mt-1">Estado</label>
+          <input for="" class="form-control" id="estado" name="estado" value="{{Estado}}"></input>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-md-2">
+          <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-danger" type="button">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+  $('#firstName').prop("disabled", true);
+  $('#lastName').prop("disabled", true);
+  $('#Cedula').prop("disabled", true);
+  $('#email').prop("disabled", true);
+  $('#membresia').hide();
+  $('#addMeses').hide();
+  $('#membresiaInicio').prop("disabled", true);
+  $('#membresiaFin').prop("disabled", true);
+  $('#estado').prop("disabled", true);
+
+  var resCedula = '{{cedula}}';
+  var resFechaFin = '{{Fin_membresia}}';
+  var resFechaIni = '{{Ini_membresia}}';
+
+  function btnAddMembresia() {
+    if (resCedula == '') {
+      alert('Usuario no seleccionado')
+    } else {
+      if (resFechaIni == '' && resFechaFin == '') {
+        $('#Cedula').prop("disabled", false);
+        $('#membresia').show();
+        $('#membresiaInicio').prop("disabled", false);
+        $('#membresiaFin').prop("disabled", false);
+        $('#estado').prop("disabled", false);
+      } else {
+        $('#Cedula').prop("disabled", true);
+        $('#membresia').hide();
+        $('#addMeses').hide();
+        $('#membresiaInicio').prop("disabled", true);
+        $('#membresiaFin').prop("disabled", true);
+        $('#estado').prop("disabled", true);
+        alert('El usuario ya tiene membresia');
+      }
+    }
+  }
+
+  function btnRenovarMemb() {
+
+    if (resCedula == '') {
+      alert('Usuario no seleccionado')
+    } else {
+      if (resFechaIni != '' && resFechaFin != '') {
+        $('#Cedula').prop("disabled", false);
+        $('#membresia').hide();
+        $('#addMeses').show();
+        $('#membresiaInicio').prop("disabled", false);
+        $('#membresiaFin').prop("disabled", false);
+        $('#estado').prop("disabled", false);
+      } else {
+        $('#Cedula').prop("disabled", true);
+        $('#membresia').hide();
+        $('#membresiaInicio').prop("disabled", true);
+        $('#membresiaFin').prop("disabled", true);
+        $('#estado').prop("disabled", true);
+        alert('El usuario no tiene membresia');
+      }
+    }
+  }
+
+  function addMes() {
+    var date = new Date(resFechaFin);
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    var today = year + "/" + month + "/" + day;
+    var valor = $("#addMeses").val();
+
+    switch (valor) {
+      case '0':
+        $("#membresiaFin").val(today);
+        break;
+      case '1':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        if (parseInt(month) > 12) {
+          year = parseInt(year) + 1;
+          month = parseInt(month) - 12;
+          if (month < 10) {
+            month = '0' + month;
+          }
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        } else {
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        }
+        break;
+
+      case '2':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 3;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        if (parseInt(month) > 12) {
+          year = parseInt(year) + 1;
+          month = parseInt(month) - 12;
+          if (month < 10) {
+            month = '0' + month;
+          }
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        } else {
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        }
+        break;
+
+      case '3':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 6;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        if (parseInt(month) > 12) {
+          year = parseInt(year) + 1;
+          month = parseInt(month) - 12;
+          if (month < 10) {
+            month = '0' + month;
+          }
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        } else {
+          today = year + "/" + month + "/" + day;
+          $("#membresiaFin").val(today);
+          $("#estado").val("A");
+        }
+        break;
+
+      case '4':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        year = year + 1;
+        today = year + "/" + month + "/" + day;
+        $("#membresiaFin").val(today);
+        $("#estado").val("A");
+        break;
+    }
+
+  }
+
+  function selecmembre() {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+
+    var today = year + "/" + month + "/" + day;
+    var valor = $("#membresia").val();
+
+    switch (valor) {
+      case '1':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        today = year + "/" + month + "/" + day;
+        $("#membresiaFin").val(today);
+        $("#estado").val("A");
+        break;
+
+      case '2':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 3;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        today = year + "/" + month + "/" + day;
+        $("#membresiaFin").val(today);
+        $("#estado").val("A");
+        break;
+
+      case '3':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        month = parseInt(month) + 6;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        today = year + "/" + month + "/" + day;
+        $("#membresiaFin").val(today);
+        $("#estado").val("A");
+        break;
+
+      case '4':
+        if (resFechaIni != '') {
+          $("#membresiaInicio").val(resFechaIni);
+        } else {
+          $("#membresiaInicio").val(today);
+        }
+        year = year + 1;
+        today = year + "/" + month + "/" + day;
+        $("#membresiaFin").val(today);
+        $("#estado").val("A");
+        break;
+    }
+
+  }
+
+  $('.input-number').on('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+</script>
+
+</html>
