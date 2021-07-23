@@ -1,10 +1,11 @@
 {
   "name": "GYM_Proyec",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proyecto en Node.js & MongoDB # Install npm i express-handlebars express-session method-override mongoose passport passport-local bcryptms connect-flash npm i nodemon -D",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",

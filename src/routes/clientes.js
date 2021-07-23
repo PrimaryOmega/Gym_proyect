@@ -5,11 +5,11 @@ const Clientes = require('../models/nuevoCliente');
 const {isAuthenticated} = require('../helpers/auth');
 
 //registro
-router.get('/clientes/registro',isAuthenticated,(req, res) => {
+router.get('/clientes/registro',/*isAuthenticated,*/(req, res) => {
     res.render('partials/registro');
 }); 
 
-router.post('/clientes/nuevo',isAuthenticated,async(req, res) => {
+router.post('/clientes/nuevo',/*isAuthenticated,*/async(req, res) => {
   
     const{ Cedula, Nombre, Apellido, Num_telef, Correo }= req.body;
     const busq = await Clientes.findOne({Cedula: Cedula});
@@ -36,13 +36,13 @@ router.post('/clientes/nuevo',isAuthenticated,async(req, res) => {
 
 
 //activar membresia
-router.get('/clientes/busqueda',isAuthenticated,(req, res) => {
+router.get('/clientes/busqueda',/*isAuthenticated,*/(req, res) => {
     res.render('partials/busquedaCli');
 
 }); 
 
 //?????
-router.post('/actualiza',isAuthenticated,async(req, res ) => { 
+router.post('/actualiza',/*isAuthenticated,*/async(req, res ) => { 
     const{ cedula}= req.body;      
     const busq = await Clientes.findOne({Cedula: cedula});
     const errors=[];
@@ -71,7 +71,7 @@ router.post('/actualiza',isAuthenticated,async(req, res ) => {
 });
 
 
-router.post('/elimina',isAuthenticated,async(req, res ) => { 
+router.post('/elimina',/*isAuthenticated,*/async(req, res ) => { 
     const{ cedula}= req.body;      
     const busq = await Clientes.findOne({Cedula: cedula});
     const errors=[];
@@ -99,7 +99,7 @@ router.post('/elimina',isAuthenticated,async(req, res ) => {
 
 });
 
-router.post('/busqueda',isAuthenticated,async(req, res ) => { 
+router.post('/busqueda',/*isAuthenticated,*/async(req, res ) => { 
     const{ cedula}= req.body;      
     const busq = await Clientes.findOne({Cedula: cedula});
     const errors=[];
@@ -133,7 +133,7 @@ router.post('/busqueda',isAuthenticated,async(req, res ) => {
 
 });
 
-router.post('/cliente/actMembresia',isAuthenticated,async(req, res)=>{
+router.post('/cliente/actMembresia',/*isAuthenticated,*/async(req, res)=>{
     const{ Cedula, membresiaInicio, membresiaFin, estado}= req.body; 
     const busq = await Clientes.findOne({Cedula: Cedula});
     const errors=[];
@@ -153,11 +153,11 @@ router.post('/cliente/actMembresia',isAuthenticated,async(req, res)=>{
 });
 
 
-router.get('/clientes/actualizar',isAuthenticated,(req, res) => {
+router.get('/clientes/actualizar',/*isAuthenticated,*/(req, res) => {
     res.render('partials/actualizarCliente');
 }); 
 
-router.post('/clientes/actualizar',isAuthenticated,async(req, res) => {
+router.post('/clientes/actualizar',/*isAuthenticated,*/async(req, res) => {
     const {Cedula,nombre,apellido,correo}= req.body;
     const errors=[];
     const busq = await Clientes.findOne({Cedula: Cedula});
@@ -173,7 +173,7 @@ router.post('/clientes/actualizar',isAuthenticated,async(req, res) => {
 
 }); 
 
-router.get('/clientes/eliminar',isAuthenticated,(req, res) => {
+router.get('/clientes/eliminar',/*isAuthenticated,*/(req, res) => {
     res.render('partials/eliminaCliente');
 });
 

@@ -20,15 +20,15 @@ router.get('/',(req, res) => {
 });
 
 
-router.get('/home',isAuthenticated,(req, res) => {
+router.get('/home',/*isAuthenticated,*/(req, res) => {
     res.render('partials/home');
 });
 
-router.get('/usuarios/registro',isAuthenticated,(req, res) => {
+router.get('/usuarios/registro',/*isAuthenticated*,/(req, res) => {
     res.render('partials/registroDeUsuario');
 }); 
 
-router.post('/usuarios/registro',isAuthenticated, async(req, res) => {
+router.post('/usuarios/registro',/*isAuthenticated,*/ async(req, res) => {
     const{username,email,password,date,rol,nombre,apellido,telefono,cedula} = req.body;
     const busq = await Usser.findOne({cedula: cedula});
     const errors = [];
@@ -58,7 +58,7 @@ router.post('/usuarios/registro',isAuthenticated, async(req, res) => {
     
 });
 
-router.post('/usuarios/buscar',isAuthenticated, async(req, res)=>{
+router.post('/usuarios/buscar',/*isAuthenticated,*/ async(req, res)=>{
     const{ cedula}= req.body;      
     const busq = await Usser.findOne({cedula: cedula});
     const errors=[];
@@ -84,7 +84,7 @@ router.post('/usuarios/buscar',isAuthenticated, async(req, res)=>{
 
 
 });
-router.post('/usuarios/buscarE',isAuthenticated, async(req, res)=>{
+router.post('/usuarios/buscarE',/*isAuthenticated,*/ async(req, res)=>{
     const{ cedula}= req.body;      
     const busq = await Usser.findOne({cedula: cedula});
     const errors=[];
@@ -112,11 +112,11 @@ router.post('/usuarios/buscarE',isAuthenticated, async(req, res)=>{
 });
 
 
-router.get('/usuarios/actualizar',isAuthenticated,(req, res) => {
+router.get('/usuarios/actualizar',/*isAuthenticated,*/(req, res) => {
     res.render('partials/actualizarUsuario');
 }); 
 
-router.post('/usuarios/actualizar',isAuthenticated,async(req, res) => {
+router.post('/usuarios/actualizar',/*isAuthenticated,*/async(req, res) => {
     const {Cedula,nombre,apellido,correo}= req.body;
     const errors=[];
     const busq = await Usser.findOne({cedula: Cedula});
@@ -132,11 +132,11 @@ router.post('/usuarios/actualizar',isAuthenticated,async(req, res) => {
 }); 
 
 
-router.get('/usuarios/eliminar',isAuthenticated,(req, res) => {
+router.get('/usuarios/eliminar',/*isAuthenticated,*/(req, res) => {
     res.render('partials/eliminaUsuario');
 }); 
 
-router.post('/usuarios/eliminar',isAuthenticated,async(req, res) => {
+router.post('/usuarios/eliminar',/*isAuthenticated,*/async(req, res) => {
     const {Cedula}= req.body;
     const errors=[];
     const busq = await Usser.findOne({cedula: Cedula});
